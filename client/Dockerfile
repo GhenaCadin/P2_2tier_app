@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Set the VITE_SERVER_URL environment variable
-ENV VITE_SERVER_URL=a53872b47837a45ecb4656ce30c3b821-2104944944.eu-west-1.elb.amazonaws.com
+ENV VITE_SERVER_URL="http://a53872b47837a45ecb4656ce30c3b821-2104944944.eu-west-1.elb.amazonaws.com:6001"
 
 # Copy the rest of the application code
 COPY . .
