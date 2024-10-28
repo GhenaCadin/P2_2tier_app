@@ -72,10 +72,13 @@ jobs:
       - name: Print Dockerfile
         run: cat client/Dockerfile
 
-      # Build Docker image for frontend
+      # Build Docker image for frontend with VITE_SERVER_URL build argument
       - name: Build Frontend Docker Image
         run: |
-          docker build --no-cache -t ghenac/rest-2-client:latest-${{ github.sha }} -f client/Dockerfile client/
+          docker build \
+            --build-arg VITE_SERVER_URL=${{ secrets.VITE_SERVER_URL }} \
+            -t ghenac/rest-2-client:latest-${{ github.sha }} \
+            -f client/Dockerfile client/
 
       # Build Docker image for backend
       - name: Build Backend Docker Image
