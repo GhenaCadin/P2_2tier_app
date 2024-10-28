@@ -70,7 +70,7 @@ jobs:
         run: docker images
 
       - name: Print Dockerfile
-        run: echo client/Dockerfile
+        run: cat client/Dockerfile
 
       # Build Docker image for frontend
       - name: Build Frontend Docker Image
