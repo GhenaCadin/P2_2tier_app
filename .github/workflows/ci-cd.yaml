@@ -65,9 +65,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-          # List Docker images to debug
-      - name: List Docker images
-        run: docker images
+
 
       # Build Docker image for frontend
       - name: Build Frontend Docker Image
@@ -79,7 +77,9 @@ jobs:
         run: |
           docker build -t ghenac/rest-2-backend:latest -f backend/Dockerfile backend/
 
-        
+      # List Docker images to debug
+      - name: List Docker images
+        run: docker images
 
 ####### Push Stage #######
 
