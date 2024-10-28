@@ -10,32 +10,6 @@ on:
 ####### Build Stage #######
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    
-    steps:
-      # Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      # Set up Node.js for frontend and backend
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      # Install dependencies and build frontend
-      - name: Install and Build Frontend
-        working-directory: ./client
-        run: |
-          npm install
-          npm run build
-
-      # Install dependencies and build backend
-      - name: Install and Build Backend
-        working-directory: ./backend
-        run: |
-          npm install
 
 
 ####### Test Stage #######
@@ -78,7 +52,7 @@ jobs:
 
   dockerize:
     runs-on: ubuntu-latest
-    needs: build  # Only runs if tests succeed
+    #needs: build  # Only runs if tests succeed
 
     steps:
       - name: Checkout code
@@ -100,6 +74,9 @@ jobs:
       - name: Build Backend Docker Image
         run: |
           docker build -t ghenac/rest-2-backend:latest-${{ github.sha }} -f backend/Dockerfile backend/
+
+      - name: Testing
+        run: docker images
 
 ####### Push Stage #######
 
