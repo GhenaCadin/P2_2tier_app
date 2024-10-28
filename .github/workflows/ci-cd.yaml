@@ -89,7 +89,7 @@ jobs:
         run: |
           docker push ghenac/rest-2-backend:latest-${{ github.sha }}
 
-####### Deploy Stage (on EKS) #######
+####### Deploy Stage (on EKS) ######
 
   deploy_eks:
     runs-on: ubuntu-latest
