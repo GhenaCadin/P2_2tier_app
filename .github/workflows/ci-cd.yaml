@@ -77,23 +77,23 @@ jobs:
         run: |
           docker build \
             --build-arg VITE_SERVER_URL=${{ secrets.VITE_SERVER_URL }} \
-            -t ghenac/rest-2-client:latest-${{ github.sha }} \
+            -t ghenac/rest-2-client:latest \
             -f client/Dockerfile client/
 
       # Build Docker image for backend
       - name: Build Backend Docker Image
         run: |
-          docker build -t ghenac/rest-2-backend:latest-${{ github.sha }} -f backend/Dockerfile backend/
+          docker build -t ghenac/rest-2-backend:latest -f backend/Dockerfile backend/
 
       # Push Frontend Docker Image to DockerHub
       - name: Push Frontend Docker Image
         run: |
-          docker push ghenac/rest-2-client:latest-${{ github.sha }}
+          docker push ghenac/rest-2-client:latest
 
       # Push Backend Docker Image to DockerHub
       - name: Push Backend Docker Image
         run: |
-          docker push ghenac/rest-2-backend:latest-${{ github.sha }}
+          docker push ghenac/rest-2-backend:latest
 
 ####### Deploy Stage (on EKS) ######
 
