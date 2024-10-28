@@ -121,12 +121,12 @@ jobs:
       # Push Frontend Docker Image to DockerHub
       - name: Push Frontend Docker Image
         run: |
-          docker push ghenac/rest-2-client:latest:${{ github.sha }}
+          docker push ghenac/rest-2-client:latest-${{ github.sha }}
 
       # Push Backend Docker Image to DockerHub
       - name: Push Backend Docker Image
         run: |
-          docker push ghenac/rest-2-backend:latest:${{ github.sha }}
+          docker push ghenac/rest-2-backend:latest-${{ github.sha }}
 
 ####### Deploy Stage (on EKS) #######
 
