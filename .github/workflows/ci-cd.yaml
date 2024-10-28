@@ -78,7 +78,7 @@ jobs:
 
   dockerize:
     runs-on: ubuntu-latest
-    needs: test  # Only runs if tests succeed
+    needs: build  # Only runs if tests succeed
 
     steps:
       - name: Checkout code
