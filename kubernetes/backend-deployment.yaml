@@ -6,7 +6,7 @@ metadata:
   name: rest-backend
   namespace: rest-ns
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: rest-backend
