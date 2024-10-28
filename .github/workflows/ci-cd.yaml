@@ -65,18 +65,21 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+          # List Docker images to debug
+      - name: List Docker images
+        run: docker images
+
       # Build Docker image for frontend
       - name: Build Frontend Docker Image
         run: |
-          docker build -t ghenac/rest-2-client:latest-${{ github.sha }} -f client/Dockerfile client/
+          docker build -t ghenac/rest-2-client:latest -f client/Dockerfile client/
 
       # Build Docker image for backend
       - name: Build Backend Docker Image
         run: |
-          docker build -t ghenac/rest-2-backend:latest-${{ github.sha }} -f backend/Dockerfile backend/
+          docker build -t ghenac/rest-2-backend:latest -f backend/Dockerfile backend/
 
-      - name: Testing
-        run: docker images
+        
 
 ####### Push Stage #######
 
@@ -95,15 +98,18 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Print docker images
+        run: docker images
+
       # Push Frontend Docker Image to DockerHub
       - name: Push Frontend Docker Image
         run: |
-          docker push ghenac/rest-2-client:latest-${{ github.sha }}
+          docker push ghenac/rest-2-client:latest
 
       # Push Backend Docker Image to DockerHub
       - name: Push Backend Docker Image
         run: |
-          docker push ghenac/rest-2-backend:latest-${{ github.sha }}
+          docker push ghenac/rest-2-backend:latest
 
 ####### Deploy Stage (on EKS) #######
 
