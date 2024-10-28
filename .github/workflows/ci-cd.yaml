@@ -116,8 +116,8 @@ jobs:
 
       - name: Check for Deployment Status
         run: |
-          kubectl rollout status deployment/rest-backend
+          kubectl rollout status deployment/rest-backend -n rest-ns
 
       - name: Check for Deployment Status
         run: |
-          kubectl rollout status deployment/rest-frontend
+          kubectl rollout status deployment/rest-frontend -n rest-ns
