@@ -75,7 +75,7 @@ jobs:
       # Build Docker image for frontend
       - name: Build Frontend Docker Image
         run: |
-          docker build -t ghenac/rest-2-client:latest-${{ github.sha }} -f client/Dockerfile client/
+          docker build --no-cache -t ghenac/rest-2-client:latest-${{ github.sha }} -f client/Dockerfile client/
 
       # Build Docker image for backend
       - name: Build Backend Docker Image
